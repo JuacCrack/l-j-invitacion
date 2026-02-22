@@ -8,7 +8,7 @@ const EVENTS = [
     subtitle: "20/03 · 10:45 — Registro Civil del Jagüel",
     when: "20/03/2026 · 10:45",
     where: "Registro Civil del Jagüel",
-    dress: "Elegante discreto / prolijo",
+    dress: "Formal discreto / prolijo (tonos neutros/pastel)",
     mapHtml:
       '<iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3952.98603890186!2d-58.49098660000001!3d-34.8319529!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x95bcd13ea2f09f95%3A0xb30ffcb9b90ab38a!2sRegistro%20Civil%20Jag%C3%BCel!5e1!3m2!1ses!2sar!4v1771711977148!5m2!1ses!2sar" loading="lazy" allowfullscreen="" referrerpolicy="no-referrer-when-downgrade" title="Mapa - Registro Civil Jagüel"></iframe>',
   },
@@ -19,7 +19,7 @@ const EVENTS = [
     subtitle: "20/03 · 13:00 — Barberena 435 (Salón del Reino)",
     when: "20/03/2026 · 13:00",
     where: "Barberena 435 (Salón del Reino)",
-    dress: "Formal sobrio (tonos neutros)",
+    dress: "Formal discreto (tonos neutros/pastel)",
     mapHtml:
       '<iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3952.867528432339!2d-58.49597792346756!3d-34.83442136972012!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x95bcd1b1a7d704ad%3A0x7dd3e6210dcd7ca0!2sSal%C3%B3n%20del%20Reino%20de%20los%20testigos%20de%20Jehov%C3%A1!5e1!3m2!1ses!2sar!4v1771712020004!5m2!1ses!2sar" loading="lazy" allowfullscreen="" referrerpolicy="no-referrer-when-downgrade" title="Mapa - Salón del Reino (Barberena 435)"></iframe>',
   },
@@ -30,7 +30,7 @@ const EVENTS = [
     subtitle: "21/03 · 11:00 — Pablo Groussac 40, C1804",
     when: "21/03/2026 · 11:00",
     where: "Pablo Groussac 40, C1804 (Buenos Aires, Prov. Bs. As.)",
-    dress: "Elegante / fiesta (cómodo para celebrar)",
+    dress: "Semiformal relajado (verde oliva o tonos neutros/pastel)",
     mapHtml:
       '<iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3955.0632543138745!2d-58.52430502346944!3d-34.78866146729031!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x95bcd1bb8e955139%3A0x278ce10d7a222cce!2sParrilla%20La%20Carrocita%20Ranch!5e1!3m2!1ses!2sar!4v1771712096941!5m2!1ses!2sar" loading="lazy" allowfullscreen="" referrerpolicy="no-referrer-when-downgrade" title="Mapa - Evento de bodas (Pablo Groussac 40)"></iframe>',
   },
