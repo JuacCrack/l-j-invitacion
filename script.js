@@ -247,7 +247,7 @@ function swalTheme() {
       title: "Esta invitación no es válida",
       html: `
       <div class="min-h-[100vh] w-[100vw] flex flex-col items-center justify-center gap-4 px-6 text-center">
-        <p class="text-slate-700">Abrí el link original (parámetro <b>id</b> en base64).</p>
+        <p class="text-slate-700">Parece que no estas invitado a esta boda.</p>
         <button id="swalReloadBtn" class="px-5 py-3 rounded-xl font-semibold text-white" style="background:#43a26f">
           Reiniciar
         </button>
