@@ -240,13 +240,14 @@ function swalTheme() {
 
 (async () => {
   const guestId = getGuestIdFromUrl();
+
   if (guestId == null) {
     await Swal.fire({
       icon: "error",
       title: "Esta invitación no es válida",
       html: `
-      <div class="min-h-[100vh] w-[100vw] flex flex-col items-center justify-center gap-4">
-        <p class="text-slate-700">Parece que no estas invitado a esta boda.</p>
+      <div class="min-h-[100vh] w-[100vw] flex flex-col items-center justify-center gap-4 px-6 text-center">
+        <p class="text-slate-700">Abrí el link original (parámetro <b>id</b> en base64).</p>
         <button id="swalReloadBtn" class="px-5 py-3 rounded-xl font-semibold text-white" style="background:#43a26f">
           Reiniciar
         </button>
@@ -257,18 +258,24 @@ function swalTheme() {
       allowEscapeKey: false,
       allowEnterKey: false,
       backdrop: true,
+      heightAuto: false,
       didOpen: () => {
+        const container = Swal.getContainer();
         const popup = Swal.getPopup();
+        const html = Swal.getHtmlContainer();
+
+        container.style.padding = "0";
         popup.style.width = "100vw";
         popup.style.height = "100vh";
         popup.style.margin = "0";
         popup.style.borderRadius = "0";
         popup.style.padding = "0";
         popup.style.display = "flex";
-        popup.style.alignItems = "stretch";
-        popup.style.justifyContent = "stretch";
-        Swal.getContainer().querySelector(".swal2-container").style.padding =
-          "0";
+        popup.style.flexDirection = "column";
+        popup.style.justifyContent = "center";
+        popup.style.alignItems = "center";
+        html.style.width = "100%";
+
         document
           .getElementById("swalReloadBtn")
           ?.addEventListener("click", () => location.reload());
@@ -276,6 +283,7 @@ function swalTheme() {
     });
     return;
   }
+
   try {
     const json = await fetchGuest(guestId);
     if (!json?.ok || !json?.data) {
