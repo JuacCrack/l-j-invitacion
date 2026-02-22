@@ -243,13 +243,39 @@ function swalTheme() {
   if (guestId == null) {
     await Swal.fire({
       icon: "error",
-      title: "Link inválido",
-      text: "Abrí el link original (parámetro id= en base64).",
-      ...swalTheme(),
+      title: "Esta invitación no es válida",
+      html: `
+      <div class="min-h-[100vh] w-[100vw] flex flex-col items-center justify-center gap-4">
+        <p class="text-slate-700">Parece que no estas invitado a esta boda.</p>
+        <button id="swalReloadBtn" class="px-5 py-3 rounded-xl font-semibold text-white" style="background:#43a26f">
+          Reiniciar
+        </button>
+      </div>
+    `,
+      showConfirmButton: false,
+      allowOutsideClick: false,
+      allowEscapeKey: false,
+      allowEnterKey: false,
+      backdrop: true,
+      didOpen: () => {
+        const popup = Swal.getPopup();
+        popup.style.width = "100vw";
+        popup.style.height = "100vh";
+        popup.style.margin = "0";
+        popup.style.borderRadius = "0";
+        popup.style.padding = "0";
+        popup.style.display = "flex";
+        popup.style.alignItems = "stretch";
+        popup.style.justifyContent = "stretch";
+        Swal.getContainer().querySelector(".swal2-container").style.padding =
+          "0";
+        document
+          .getElementById("swalReloadBtn")
+          ?.addEventListener("click", () => location.reload());
+      },
     });
     return;
   }
-
   try {
     const json = await fetchGuest(guestId);
     if (!json?.ok || !json?.data) {
