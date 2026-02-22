@@ -1,0 +1,387 @@
+<!doctype html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>L&J - Invitación de Bodas</title>
+
+    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css"
+    />
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
+    <style type="text/tailwindcss">
+      @theme {
+        --color-cactus-50: #f3faf6;
+        --color-cactus-100: #e3f3ea;
+        --color-cactus-200: #c7e7d6;
+        --color-cactus-300: #9ed5b8;
+        --color-cactus-400: #6fbd93;
+        --color-cactus-500: #43a26f;
+        --color-cactus-600: #2f8257;
+
+        --color-cream-50: #fffdf7;
+        --color-cream-100: #fff7e6;
+        --color-cream-200: #ffefcf;
+
+        --radius-card: 24px;
+      }
+    </style>
+
+    <style>
+      .grain {
+        background-image:
+          radial-gradient(
+            circle at 10% 10%,
+            rgba(0, 0, 0, 0.04) 0 1px,
+            transparent 1px
+          ),
+          radial-gradient(
+            circle at 90% 20%,
+            rgba(0, 0, 0, 0.03) 0 1px,
+            transparent 1px
+          ),
+          radial-gradient(
+            circle at 30% 90%,
+            rgba(0, 0, 0, 0.03) 0 1px,
+            transparent 1px
+          );
+        background-size:
+          220px 220px,
+          260px 260px,
+          300px 300px;
+        mix-blend-mode: multiply;
+        pointer-events: none;
+      }
+      .safe-shadow {
+        box-shadow: 0 18px 50px rgba(16, 24, 40, 0.1);
+      }
+      .ring-soft {
+        box-shadow: 0 0 0 1px rgba(16, 24, 40, 0.08) inset;
+      }
+      .focus-soft:focus-visible {
+        outline: 3px solid rgba(67, 162, 111, 0.35);
+        outline-offset: 3px;
+      }
+      details[open] .chev {
+        transform: rotate(180deg);
+      }
+      .map-wrap iframe {
+        width: 100%;
+        height: 360px;
+        border: 0;
+      }
+      @media (min-width: 640px) {
+        .map-wrap iframe {
+          height: 420px;
+        }
+      }
+      .swal2-popup {
+        border-radius: 18px !important;
+      }
+    </style>
+  </head>
+
+  <body class="min-h-dvh bg-cream-50 text-slate-900">
+    <div aria-hidden="true" class="fixed inset-0 -z-10 overflow-hidden">
+      <div
+        class="absolute -top-40 -left-40 size-[520px] rounded-full bg-cactus-100 blur-3xl opacity-70"
+      ></div>
+      <div
+        class="absolute -bottom-48 -right-40 size-[600px] rounded-full bg-cream-200 blur-3xl opacity-80"
+      ></div>
+      <div class="grain absolute inset-0 opacity-60"></div>
+    </div>
+
+    <main class="mx-auto w-full max-w-5xl px-4 py-8 sm:py-12">
+      <section
+        class="relative overflow-hidden rounded-[var(--radius-card)] bg-white/70 ring-soft backdrop-blur safe-shadow"
+      >
+        <div class="grid gap-6 p-5 sm:p-8 lg:grid-cols-2 lg:gap-10">
+          <div class="flex flex-col justify-between gap-6">
+            <header class="space-y-3">
+              <h1 class="text-4xl font-semibold tracking-tight sm:text-5xl">
+                Lara <span class="text-cactus-600">&</span> Joaquín
+              </h1>
+
+              <p class="text-base leading-relaxed text-slate-700" id="greeting">
+                Hola 👋
+              </p>
+            </header>
+          </div>
+
+          <div class="relative">
+            <div
+              class="absolute -inset-2 rounded-[28px] bg-cactus-100/70 blur-xl"
+            ></div>
+            <figure
+              class="relative overflow-hidden rounded-[24px] bg-white ring-soft"
+            >
+              <img
+                src="joaylara.jpg"
+                alt="Lara y Joaquín"
+                class="aspect-[4/5] w-full object-cover sm:aspect-[16/13]"
+                loading="eager"
+              />
+            </figure>
+          </div>
+
+          <div class="bg-cream-50/80" id="countdownBox">
+            <div
+              class="mt-4 grid grid-cols-4 gap-2 sm:gap-3"
+              aria-label="Temporizador"
+            >
+              <div class="rounded-2xl bg-white/80 p-3 text-center ring-soft">
+                <div class="text-2xl font-semibold tabular-nums" id="cdDays">
+                  --
+                </div>
+                <div class="text-xs text-slate-600">días</div>
+              </div>
+              <div class="rounded-2xl bg-white/80 p-3 text-center ring-soft">
+                <div class="text-2xl font-semibold tabular-nums" id="cdHours">
+                  --
+                </div>
+                <div class="text-xs text-slate-600">horas</div>
+              </div>
+              <div class="rounded-2xl bg-white/80 p-3 text-center ring-soft">
+                <div class="text-2xl font-semibold tabular-nums" id="cdMins">
+                  --
+                </div>
+                <div class="text-xs text-slate-600">min</div>
+              </div>
+              <div class="rounded-2xl bg-white/80 p-3 text-center ring-soft">
+                <div class="text-2xl font-semibold tabular-nums" id="cdSecs">
+                  --
+                </div>
+                <div class="text-xs text-slate-600">seg</div>
+              </div>
+            </div>
+          </div>
+
+          <div
+            class="hidden rounded-2xl bg-cream-50/80 p-4 ring-soft lg:col-span-2"
+            id="confirmedHint"
+          >
+            <p class="text-sm text-slate-700">
+              <span class="font-semibold">Esto es lo que confirmaste:</span>
+              abajo tenés el resumen con horarios, ubicación y mapa.
+            </p>
+          </div>
+        </div>
+      </section>
+
+      <section class="mt-8 space-y-4" id="rsvpSection">
+        <div
+          class="flex flex-col gap-2 sm:flex-row sm:items-end sm:justify-between"
+        >
+          <div>
+            <h2 class="text-2xl font-semibold tracking-tight" id="sectionTitle">
+              Confirmación
+            </h2>
+            <p class="text-slate-700" id="sectionSubtitle">
+              Marcá si asistís o no a cada evento.
+            </p>
+          </div>
+
+          <button
+            id="resetBtn"
+            type="button"
+            class="focus-soft rounded-xl bg-white/70 px-4 py-2 text-sm font-medium text-slate-800 ring-soft hover:bg-white"
+          >
+            Reiniciar
+          </button>
+        </div>
+
+        <form id="rsvpForm" class="grid gap-4 lg:grid-cols-3"></form>
+
+        <div
+          class="hidden rounded-[var(--radius-card)] bg-white/70 p-5 ring-soft backdrop-blur safe-shadow"
+          id="summaryBox"
+        >
+          <div class="flex items-start justify-between gap-3">
+            <div>
+              <h3 class="text-lg font-semibold">Tu confirmación</h3>
+              <p class="mt-1 text-sm text-slate-700" id="summaryIntro"></p>
+            </div>
+            <span
+              class="rounded-full bg-cactus-100 px-3 py-1 text-xs font-medium text-slate-800"
+              >Confirmado</span
+            >
+          </div>
+          <div
+            class="mt-4 grid gap-3 sm:grid-cols-2 lg:grid-cols-3"
+            id="summaryCards"
+          ></div>
+        </div>
+      </section>
+
+      <section class="mt-8">
+        <div
+          class="rounded-[var(--radius-card)] bg-white/70 p-5 ring-soft backdrop-blur safe-shadow"
+        >
+          <div class="flex items-start justify-between gap-3">
+            <div>
+              <h2 class="text-2xl font-semibold tracking-tight">
+                ¿Querés darnos un presente?
+              </h2>
+              <p class="mt-2 text-sm text-slate-700">
+                Con tu presencia, risas y amistad es más que suficiente. Pero si
+                deseás hacernos un pequeño presente, dejamos nuestros datos
+                bancarios:
+              </p>
+            </div>
+            <span
+              class="rounded-full bg-cactus-100 px-3 py-1 text-xs font-medium text-slate-800"
+              >Opcional</span
+            >
+          </div>
+
+          <details class="mt-4 rounded-2xl bg-cream-50/80 ring-soft">
+            <summary
+              class="focus-soft flex cursor-pointer list-none items-center justify-between gap-3 px-4 py-3"
+            >
+              <span class="text-sm font-semibold text-slate-900"
+                >Ver datos bancarios</span
+              >
+              <i
+                class="bi bi-chevron-down chev text-slate-500 transition-transform"
+              ></i>
+            </summary>
+
+            <div class="px-4 pb-4">
+              <div class="mt-2 grid gap-3 sm:grid-cols-2">
+                <div class="space-y-1">
+                  <p class="text-xs font-medium text-slate-500">Banco</p>
+                  <p class="text-sm font-semibold text-slate-900">
+                    Banco Galicia
+                  </p>
+                </div>
+                <div class="space-y-1">
+                  <p class="text-xs font-medium text-slate-500">Titular</p>
+                  <p class="text-sm font-semibold text-slate-900">
+                    JOAQUIN YOEL
+                  </p>
+                </div>
+                <div class="space-y-1">
+                  <p class="text-xs font-medium text-slate-500">CTA</p>
+                  <p class="text-sm font-semibold text-slate-900">
+                    4055264-1 061-2
+                  </p>
+                </div>
+                <div class="space-y-1">
+                  <p class="text-xs font-medium text-slate-500">CUIL</p>
+                  <p class="text-sm font-semibold text-slate-900">
+                    20-45039821-8
+                  </p>
+                </div>
+                <div class="space-y-1 sm:col-span-2">
+                  <p class="text-xs font-medium text-slate-500">CBU</p>
+                  <p class="text-sm font-semibold text-slate-900 break-all">
+                    00700610-30004055264124
+                  </p>
+                </div>
+                <div class="space-y-1 sm:col-span-2">
+                  <p class="text-xs font-medium text-slate-500">Alias</p>
+                  <p class="text-sm font-semibold text-slate-900">
+                    JOA.WEB.DESIGN
+                  </p>
+                </div>
+              </div>
+            </div>
+          </details>
+        </div>
+      </section>
+
+      <footer class="mt-10 pb-6 text-center text-xs text-slate-500">
+        Hecho con ♥ para Lara & Joaquín · Marzo 2026
+      </footer>
+    </main>
+
+    <template id="eventCardTpl">
+      <article
+        class="rounded-[var(--radius-card)] bg-white/70 p-5 ring-soft backdrop-blur safe-shadow"
+        data-event=""
+      >
+        <div class="flex items-start justify-between gap-3">
+          <div>
+            <h3 class="text-lg font-semibold" data-title></h3>
+            <p class="mt-1 text-sm text-slate-700" data-subtitle></p>
+          </div>
+          <span
+            class="rounded-full bg-cactus-100 px-3 py-1 text-xs font-medium text-slate-800"
+            data-badge
+          ></span>
+        </div>
+
+        <dl class="mt-4 space-y-2 text-sm text-slate-700">
+          <div class="flex gap-2">
+            <dt class="min-w-24 text-slate-500">Vestimenta</dt>
+            <dd data-dress></dd>
+          </div>
+        </dl>
+
+        <fieldset class="mt-4" data-rsvp>
+          <div class="grid grid-cols-2 gap-2">
+            <label class="cursor-pointer">
+              <input
+                class="peer sr-only"
+                type="radio"
+                data-name
+                value="1"
+                required
+              />
+              <span
+                class="block rounded-xl bg-white/70 px-3 py-2 text-center text-sm ring-soft peer-checked:bg-cactus-100 peer-checked:text-slate-900"
+                >Voy</span
+              >
+            </label>
+            <label class="cursor-pointer">
+              <input class="peer sr-only" type="radio" data-name value="0" />
+              <span
+                class="block rounded-xl bg-white/70 px-3 py-2 text-center text-sm ring-soft peer-checked:bg-cream-100 peer-checked:text-slate-900"
+                >No voy</span
+              >
+            </label>
+          </div>
+        </fieldset>
+
+        <details class="mt-4 rounded-2xl bg-white/70 ring-soft">
+          <summary
+            class="focus-soft flex cursor-pointer list-none items-center justify-between gap-3 px-4 py-3"
+          >
+            <span class="text-sm font-medium text-slate-800">Ver mapa</span>
+            <i
+              class="bi bi-chevron-down chev text-slate-500 transition-transform"
+            ></i>
+          </summary>
+          <div class="map-wrap px-3 pb-3" data-map></div>
+        </details>
+      </article>
+    </template>
+
+    <template id="summaryCardTpl">
+      <div class="rounded-2xl bg-cream-50/80 p-4 ring-soft">
+        <p class="text-sm font-semibold text-slate-900" data-title></p>
+        <p class="mt-1 text-sm text-slate-700" data-when></p>
+        <p class="mt-1 text-sm text-slate-700" data-where></p>
+        <div class="mt-3">
+          <details class="rounded-2xl bg-white/70 ring-soft">
+            <summary
+              class="focus-soft flex cursor-pointer list-none items-center justify-between gap-3 px-4 py-3"
+            >
+              <span class="text-sm font-medium text-slate-800">Ver mapa</span>
+              <i
+                class="bi bi-chevron-down chev text-slate-500 transition-transform"
+              ></i>
+            </summary>
+            <div class="map-wrap px-3 pb-3" data-map></div>
+          </details>
+        </div>
+      </div>
+    </template>
+  </body>
+
+  <script src="script.js"></script>
+</html>
