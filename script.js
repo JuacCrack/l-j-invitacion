@@ -19,7 +19,7 @@ const EVENTS = [
     subtitle: "20/03 · 13:00 — Barberena 435 (Salón del Reino)",
     when: "20/03/2026 · 13:00",
     where: "Barberena 435 (Salón del Reino)",
-    dress: "Formal discreto (tonos neutros/pastel)",
+    dress: "Formal discreto / prolijo (tonos neutros/pastel)",
     mapHtml:
       '<iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3952.867528432339!2d-58.49597792346756!3d-34.83442136972012!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x95bcd1b1a7d704ad%3A0x7dd3e6210dcd7ca0!2sSal%C3%B3n%20del%20Reino%20de%20los%20testigos%20de%20Jehov%C3%A1!5e1!3m2!1ses!2sar!4v1771712020004!5m2!1ses!2sar" loading="lazy" allowfullscreen="" referrerpolicy="no-referrer-when-downgrade" title="Mapa - Salón del Reino (Barberena 435)"></iframe>',
   },
